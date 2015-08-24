@@ -17,7 +17,7 @@ setup(name='sphere2cube',
       author_email='tbrindus@gmail.com',
       url='http://github.com/Xyene/sphere2cube',
       packages=find_packages(),
-      scripts=['bin/sphere2cube'],
+      scripts=['sphere2cube/sphere2cube.py'],
       classifiers=[
           'Development Status :: 3 - Alpha',
           'Environment :: Console',
