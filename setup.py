@@ -1,6 +1,6 @@
-__author__ = 'Tudor'
+#!/usr/bin/env python
 
-# !/usr/bin/env python
+__author__ = 'Tudor'
 import ez_setup
 
 ez_setup.use_setuptools()
@@ -17,7 +17,7 @@ setup(name='sphere2cube',
       author_email='tbrindus@gmail.com',
       url='http://github.com/Xyene/sphere2cube',
       packages=find_packages(),
-      scripts=['sphere2cube/sphere2cube.py'],
+      scripts=['sphere2cube/sphere2cube'],
       classifiers=[
           'Development Status :: 3 - Alpha',
           'Environment :: Console',
