@@ -33,5 +33,12 @@ $> sphere2cube source.jpg -r2048 -f TGA
 ```
 which would generate `face_1_2048.tga`, ..., `face_6_2048.tga` in the working directory.
 
+# Installation
+Installation is easy with `pip`.
+
+```shell
+$> pip install https://github.com/Xyene/sphere2cube/zipball/master
+```
+
 # Dependencies
 `sphere2cube` depends on Blender being installed on the system.
