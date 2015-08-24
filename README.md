@@ -25,6 +25,8 @@ optional arguments:
                         format to use when saving faces, i.e. "PNG" or "TGA"
 ```
 
+Output formats supported depend on the Blender installation, but will generally be TGA, IRIS, HAMX, FTYPE, JPEG, MOVIE, IRIZ, RAWTGA, AVIRAW, AVIJPEG, PNG, BMP, and FRAMESERVER.
+
 For example, to render a 2048-resolution TGA cubemap from `source.jpg`, we could use:
 ```
 $> sphere2cube source.jpg -r2048 -f TGA
