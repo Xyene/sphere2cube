@@ -27,7 +27,7 @@ def main():
                          help='format to use when saving faces, i.e. "PNG" or "TGA"')
     _parser.add_argument('-o', '--output-dir', type=str, default=None,
                          help='output directory for faces')
-    _parser.add_argument('-r', '--rotation', type=int, nargs=3, default=[0, 0, 0],
+    _parser.add_argument('-R', '--rotation', type=int, nargs=3, default=[0, 0, 0],
                          help="rotation in degrees to apply before rendering cube faces, x y z format")
     _args = _parser.parse_args()
 
