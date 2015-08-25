@@ -7,7 +7,7 @@ import os
 import sys
 import tempfile
 import subprocess
-
+from distutils.sysconfig import get_python_lib
 
 if __name__ == '__main__':
     _parser = argparse.ArgumentParser(description='''
@@ -47,7 +47,7 @@ bpy.ops.render.render(animation=True)
 
         process = subprocess.Popen(
             ['blender', '--background', '-noaudio', '-b',
-             os.path.join(os.path.dirname(os.path.realpath(__file__)), 'cubemapgen.blend'),
+             os.path.join(get_python_lib(), 'cubemapgen.blend'),
              '-o', face_format, '-F', _args.format, '-x', '1', '-P', temp.name]
             + (['-t', _args.threads] if _args.threads else []))
 
