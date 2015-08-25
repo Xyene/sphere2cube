@@ -19,6 +19,9 @@ setup(name='sphere2cube.py',
       packages=find_packages(),
       data_files=[('', ['sphere2cube/cubemapgen.blend'])],
       scripts=['sphere2cube/sphere2cube'],
+      entry_points={
+          'console_scripts': ['sphere2cube=sphere2cube._sphere2cube:main'],
+      },
       classifiers=[
           'Development Status :: 3 - Alpha',
           'Environment :: Console',
