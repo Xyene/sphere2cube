@@ -17,7 +17,7 @@ setup(name='sphere2cube',
       author_email='tbrindus@gmail.com',
       url='http://github.com/Xyene/sphere2cube',
       packages=find_packages(),
-      package_data={'': ['sphere2cube/cubemapgen.blend']},
+      package_data={'sphere2cube': ['sphere2cube/cubemapgen.blend']},
       scripts=['sphere2cube/sphere2cube'],
       classifiers=[
           'Development Status :: 3 - Alpha',
