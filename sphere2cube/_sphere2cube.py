@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 __author__ = 'Tudor'
 
 import argparse
@@ -8,7 +6,8 @@ import sys
 import tempfile
 import subprocess
 
-if __name__ == '__main__':
+
+def main():
     _parser = argparse.ArgumentParser(description='''
         Maps an equirectangular (cylindrical projection; skysphere) map into 6 cube (cubemap; skybox) faces.
     ''')
@@ -45,10 +44,9 @@ bpy.ops.render.render(animation=True)
         temp.flush()
 
         process = subprocess.Popen(
-            ['blender', '-b',
+            ['blender', '--background', '-noaudio', '-b',
              os.path.join(os.path.dirname(os.path.realpath(__file__)), 'cubemapgen.blend'),
              '-o', face_format, '-F', _args.format, '-x', '1', '-P', temp.name]
-            + (['-t', _args.threads] if _args.threads else []),
-            shell=True)
+            + (['-t', _args.threads] if _args.threads else []))
 
         process.wait()
