@@ -48,7 +48,7 @@ bpy.ops.render.render(animation=True)
 
         process = subprocess.Popen(
             ['blender', '--background', '-noaudio', '-b',
-             os.path.join(get_python_lib(), 'sphere2cube', 'cubemapgen.blend'),
+             os.path.join(os.path.dirname(os.path.realpath(__file__)), 'cubemapgen.blend'),
              '-o', face_format, '-F', _args.format, '-x', '1', '-P', temp.name]
             + (['-t', _args.threads] if _args.threads else []))
 
