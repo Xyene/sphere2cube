@@ -3,8 +3,9 @@
 
 ```shell
 $> sphere2cube -h
-usage: sphere2cube.py [-h] [-r RESOLUTION] [-t THREADS] [-p PATH] [-f FORMAT]
-                      [file_path]
+usage: sphere2cube.py [-h] [-r RESOLUTION] [-t THREADS] [-p PATH]
+                             [-f FORMAT] [-o OUTPUT_DIR] [-R x y z]
+                             [file_path]
 
 Maps an equirectangular (cylindrical projection; skysphere) map into 6 cube
 (cubemap; skybox) faces.
@@ -23,6 +24,11 @@ optional arguments:
                         resolution
   -f FORMAT, --format FORMAT
                         format to use when saving faces, i.e. "PNG" or "TGA"
+  -o OUTPUT_DIR, --output-dir OUTPUT_DIR
+                        output directory for faces
+  -R x y z, --rotation x y z
+                        rotation in degrees to apply before rendering cube
+                        faces, x y z format
 ```
 
 Output formats supported depend on the Blender installation, but will generally be TGA, IRIS, HAMX, FTYPE, JPEG, MOVIE, IRIZ, RAWTGA, AVIRAW, AVIJPEG, PNG, BMP, and FRAMESERVER.
