@@ -46,7 +46,7 @@ bpy.ops.render.render(animation=True)
 
     output = _args.output_dir
     if output:
-        output = os.path.join(output, face_format) if os.path.isabs(output) else os.path.join(os.getcwd(), face_format)
+        output = os.path.join(output, face_format) if os.path.isabs(output) else os.path.join(os.getcwd(), output, face_format)
     else:
         output = face_format
 
