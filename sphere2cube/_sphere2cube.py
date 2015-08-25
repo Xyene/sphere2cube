@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import math
 
 __author__ = 'Tudor'
 
@@ -7,7 +8,6 @@ import os
 import sys
 import tempfile
 import subprocess
-from distutils.sysconfig import get_python_lib
 
 
 def main():
@@ -27,7 +27,11 @@ def main():
                          help='format to use when saving faces, i.e. "PNG" or "TGA"')
     _parser.add_argument('-o', '--output-dir', type=str, default=None,
                          help='output directory for faces')
+    _parser.add_argument('-r', '--rotation', type=int, nargs=3, default=[0, 0, 0],
+                         help="rotation in degrees to apply before rendering cube faces, x y z format")
     _args = _parser.parse_args()
+
+    rotations = map(lambda x: math.radians(x), _args.rotation)
 
     if _args.file_path is None:
         _parser.print_help()
@@ -41,8 +45,13 @@ import bpy
 bpy.data.textures[0].image = bpy.data.images.load("%s")
 bpy.context.scene.render.resolution_x = %d
 bpy.context.scene.render.resolution_y = %d
+
+sphere = bpy.data.objects["Sphere"]
+sphere.rotation_mode = 'XYZ'
+sphere.rotation_euler = (%f, %f, %f)
+
 bpy.ops.render.render(animation=True)
-    ''' % (_args.file_path, _args.resolution, _args.resolution)
+    ''' % (_args.file_path, _args.resolution, _args.resolution, rotations[0], rotations[1], rotations[2])
 
     output = _args.output_dir
     if output:
