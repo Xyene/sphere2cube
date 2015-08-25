@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 with open('README.md') as file:
     long_description = file.read()
 
-setup(name='sphere2cube',
+setup(name='sphere2cube.py',
       version='0.1.0',
       description='Python script to map an equirectangular (cylindrical projection; skysphere) map into 6 cube (cubemap; skybox) faces',
       long_description=long_description,
