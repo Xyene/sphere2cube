@@ -7,7 +7,7 @@ import tempfile
 import subprocess
 
 
-def main():
+if __name__ == '__main__':
     _parser = argparse.ArgumentParser(description='''
         Maps an equirectangular (cylindrical projection; skysphere) map into 6 cube (cubemap; skybox) faces.
     ''')

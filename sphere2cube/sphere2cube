@@ -1,8 +1,0 @@
-#!/usr/bin/env python
-
-__author__ = 'Tudor'
-
-import _sphere2cube
-
-if __name__ == '__main__':
-    _sphere2cube.main()
