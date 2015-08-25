@@ -18,7 +18,6 @@ setup(name='sphere2cube.py',
       url='http://github.com/Xyene/sphere2cube',
       packages=find_packages(),
       data_files=[('', ['sphere2cube/cubemapgen.blend'])],
-      scripts=['sphere2cube/sphere2cube'],
       entry_points={
           'console_scripts': ['sphere2cube=sphere2cube._sphere2cube:main'],
       },
