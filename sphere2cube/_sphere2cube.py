@@ -25,6 +25,8 @@ def main():
                               '"face_%%n_%%r", where %%n is face number, and %%r is resolution')
     _parser.add_argument('-f', '--format', type=str, default='TGA',
                          help='format to use when saving faces, i.e. "PNG" or "TGA"')
+    _parser.add_argument('-o', '--output-dir', type=str, default=None,
+                         help='output directory for faces')
     _args = _parser.parse_args()
 
     if _args.file_path is None:
@@ -42,6 +44,12 @@ bpy.context.scene.render.resolution_y = %d
 bpy.ops.render.render(animation=True)
     ''' % (_args.file_path, _args.resolution, _args.resolution)
 
+    output = _args.output_dir
+    if output:
+        output = os.path.join(output, face_format) if os.path.isabs(output) else os.path.join(os.getcwd(), face_format)
+    else:
+        output = face_format
+
     with tempfile.NamedTemporaryFile(delete=False, suffix='.py') as temp:
         temp.write(script)
         temp.flush()
@@ -49,7 +57,7 @@ bpy.ops.render.render(animation=True)
         process = subprocess.Popen(
             ['blender', '--background', '-noaudio', '-b',
              os.path.join(os.path.dirname(os.path.realpath(__file__)), 'cubemapgen.blend'),
-             '-o', face_format, '-F', _args.format, '-x', '1', '-P', temp.name]
+             '-o', output, '-F', _args.format, '-x', '1', '-P', temp.name]
             + (['-t', _args.threads] if _args.threads else []))
 
         process.wait()
