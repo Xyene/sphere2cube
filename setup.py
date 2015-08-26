@@ -4,7 +4,7 @@ __author__ = 'Tudor'
 import ez_setup
 
 ez_setup.use_setuptools()
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, version
 
 with open('README.md') as file:
     long_description = file.read()
