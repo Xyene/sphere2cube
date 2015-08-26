@@ -2,7 +2,7 @@
 `sphere2cube` is a Python script to map an equirectangular (cylindrical projection; skysphere) map into 6 cube (cubemap; skybox) faces.
 
 ```shell
-$> sphere2cube -h
+$ sphere2cube -h
 usage: sphere2cube.py [-h] [-r RESOLUTION] [-t THREADS] [-p PATH]
                              [-f FORMAT] [-o OUTPUT_DIR] [-R X Y Z]
                              [file_path]
