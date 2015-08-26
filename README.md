@@ -38,7 +38,7 @@ Output formats supported depend on the Blender installation, but will generally 
 # Examples
 For example, to render a 2048-resolution TGA cubemap from `source.jpg`, we could use:
 ```
-$> sphere2cube source.jpg -r2048 -f TGA
+$ sphere2cube source.jpg -r2048 -f TGA
 ```
 which would generate `face_1_2048.tga`, ..., `face_6_2048.tga` in the working directory.
 
@@ -48,8 +48,8 @@ which would generate `face_1_2048.tga`, ..., `face_6_2048.tga` in the working di
 ## Linux
 
 ```shell
-$> apt-get install blender
-$> pip install https://github.com/Xyene/sphere2cube/zipball/master
+$ apt-get install blender
+$ pip install https://github.com/Xyene/sphere2cube/zipball/master
 ```
 
 ## Windows
