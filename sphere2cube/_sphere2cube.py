@@ -18,17 +18,17 @@ def main():
                          help='equirectangular image file path')
     _parser.add_argument('-r', '--resolution', type=int, default=1024,
                          help='resolution for each cube face generated')
-    _parser.add_argument('-t', '--threads', type=int, default=None,
-                         help='number of threads to use when rendering')
+    _parser.add_argument('-R', '--rotation', type=int, nargs=3, default=[0, 0, 0], metavar=('X', 'Y', 'Z'),
+                         help="rotation in degrees to apply before rendering cube faces, x y z format")
     _parser.add_argument('-p', '--path', type=str, default='face_%n_%r',
                          help='pattern to save rendered faces: default is '
                               '"face_%%n_%%r", where %%n is face number, and %%r is resolution')
-    _parser.add_argument('-f', '--format', type=str, default='TGA',
-                         help='format to use when saving faces, i.e. "PNG" or "TGA"')
     _parser.add_argument('-o', '--output-dir', type=str, default=None,
                          help='output directory for faces')
-    _parser.add_argument('-R', '--rotation', type=int, nargs=3, default=[0, 0, 0], metavar=('x', 'y', 'z'),
-                         help="rotation in degrees to apply before rendering cube faces, x y z format")
+    _parser.add_argument('-f', '--format', type=str, default='TGA',
+                         help='format to use when saving faces, i.e. "PNG" or "TGA"')
+    _parser.add_argument('-t', '--threads', type=int, default=None,
+                         help='number of threads to use when rendering')
     _args = _parser.parse_args()
 
     rotations = map(lambda x: math.radians(x), _args.rotation)

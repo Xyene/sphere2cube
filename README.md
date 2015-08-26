@@ -4,7 +4,7 @@
 ```shell
 $> sphere2cube -h
 usage: sphere2cube.py [-h] [-r RESOLUTION] [-t THREADS] [-p PATH]
-                             [-f FORMAT] [-o OUTPUT_DIR] [-R x y z]
+                             [-f FORMAT] [-o OUTPUT_DIR] [-R X Y Z]
                              [file_path]
 
 Maps an equirectangular (cylindrical projection; skysphere) map into 6 cube
@@ -17,18 +17,18 @@ optional arguments:
   -h, --help            show this help message and exit
   -r RESOLUTION, --resolution RESOLUTION
                         resolution for each cube face generated
-  -t THREADS, --threads THREADS
-                        number of threads to use when rendering
+  -R X Y Z, --rotation X Y Z
+                        rotation in degrees to apply before rendering cube
+                        faces, x y z format (z is up)
   -p PATH, --path PATH  pattern to save rendered faces: default is
                         "face_%n_%r", where %n is face number, and %r is
                         resolution
-  -f FORMAT, --format FORMAT
-                        format to use when saving faces, i.e. "PNG" or "TGA"
   -o OUTPUT_DIR, --output-dir OUTPUT_DIR
                         output directory for faces
-  -R x y z, --rotation x y z
-                        rotation in degrees to apply before rendering cube
-                        faces, x y z format
+  -f FORMAT, --format FORMAT
+                        format to use when saving faces, i.e. "PNG" or "TGA"
+  -t THREADS, --threads THREADS
+                        number of threads to use when rendering
 ```
 
 Output formats supported depend on the Blender installation, but will generally be TGA, IRIS, HAMX, FTYPE, JPEG, MOVIE, IRIZ, RAWTGA, AVIRAW, AVIJPEG, PNG, BMP, and FRAMESERVER.
