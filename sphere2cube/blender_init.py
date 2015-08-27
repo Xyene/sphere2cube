@@ -2,8 +2,7 @@ import bpy
 import sys
 
 bpy.data.textures[0].image = bpy.data.images.load("%s" % sys.argv[-5])
-bpy.context.scene.render.resolution_x = int(sys.argv[-4])
-bpy.context.scene.render.resolution_y = int(sys.argv[-4])
+bpy.context.scene.render.resolution_x = bpy.context.scene.render.resolution_y = int(sys.argv[-4])
 
 sphere = bpy.data.objects["Sphere"]
 sphere.rotation_mode = 'XYZ'

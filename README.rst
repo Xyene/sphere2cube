@@ -9,7 +9,7 @@ faces.
 
     $ sphere2cube -h
     usage: sphere2cube [-h] [-v] [-r <size>] [-R <rx> <ry> <rz>] [-p <pattern>]
-                       [-o <dir>] [-f <name>] [-t <count>] [-V]
+                       [-o <dir>] [-f <name>] [-b <path>] [-t <count>] [-V]
                        [<source>]
 
     Maps an equirectangular (cylindrical projection; skysphere) map into 6 cube
@@ -34,6 +34,8 @@ faces.
                             output directory for faces
       -f <name>, --format <name>
                             format to use when saving faces, i.e. "PNG" or "TGA"
+      -b <path>, --blender-path <path>
+                            path to blender executable (default "blender")
       -t <count>, --threads <count>
                             number of threads to use when rendering (1-64)
       -V, --verbose         enable verbose logging

@@ -1,5 +1,3 @@
 include sphere2cube/projector.blend
 include LICENSE
 include *.rst
-global-exclude *.pyc
-global-exclude *.pyo

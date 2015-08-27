@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 __author__ = 'Tudor'
-__version__ = '0.1.0'
+__version__ = '0.1.4'
 
 import argparse
 import os
@@ -28,6 +28,8 @@ def main():
                          help='output directory for faces')
     _parser.add_argument('-f', '--format', type=str, default='TGA', metavar='<name>',
                          help='format to use when saving faces, i.e. "PNG" or "TGA"')
+    _parser.add_argument('-b', '--blender-path', type=str, default='blender', metavar='<path>',
+                         help='path to blender executable (default "blender")')
     _parser.add_argument('-t', '--threads', type=int, default=None, metavar='<count>',
                          help='number of threads to use when rendering (1-64)')
     _parser.add_argument('-V', '--verbose', action='store_true',
@@ -59,14 +61,20 @@ def main():
 
     out = open(os.devnull, 'w') if not _args.verbose else None
 
-    process = subprocess.Popen(
-        ['blender', '--background', '-noaudio',
-         # https://aerotwist.com/tutorials/create-your-own-environment-maps/, CC0
-         '-b', os.path.join(os.path.dirname(os.path.realpath(__file__)), 'projector.blend'),
-         '-o', output, '-F', _args.format, '-x', '1',
-         '-P', os.path.join(os.path.dirname(os.path.realpath(__file__)), 'blender_init.py')]
-        + (['-t', str(_args.threads)] if _args.threads else [])
-        + ['--', _args.file_path, str(_args.resolution), str(rotations[0]), str(rotations[1]), str(rotations[2])],
-        stderr=out, stdout=out)
-
-    process.wait()
+    try:
+        process = subprocess.Popen(
+            [_args.blender_path, '--background', '-noaudio',
+             # https://aerotwist.com/tutorials/create-your-own-environment-maps/, CC0
+             '-b', os.path.join(os.path.dirname(os.path.realpath(__file__)), 'projector.blend'),
+             '-o', output, '-F', _args.format, '-x', '1',
+             '-P', os.path.join(os.path.dirname(os.path.realpath(__file__)), 'blender_init.py')]
+            + (['-t', str(_args.threads)] if _args.threads else [])
+            + ['--', _args.file_path, str(_args.resolution), str(rotations[0]), str(rotations[1]), str(rotations[2])],
+            stderr=out, stdout=out)
+    except:
+        print('error spawning blender (%s) executable' % _args.blender_path)
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
+    else:
+        process.wait()
