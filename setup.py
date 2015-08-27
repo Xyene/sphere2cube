@@ -17,9 +17,9 @@ setup(name='sphere2cube.py',
       author_email='tbrindus@gmail.com',
       url='http://github.com/Xyene/sphere2cube',
       packages=find_packages(),
-      data_files=[('', ['sphere2cube/cubemapgen.blend'])],
+      data_files=[('', ['sphere2cube/projector.blend'])],
       entry_points={
-          'console_scripts': ['sphere2cube=sphere2cube._sphere2cube:main'],
+          'console_scripts': ['sphere2cube=sphere2cube.sphere2cube:main'],
       },
       classifiers=[
           'Development Status :: 3 - Alpha',

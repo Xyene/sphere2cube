@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import math
 
 __author__ = 'Tudor'
 __version__ = '0.1.0'
@@ -7,18 +6,14 @@ __version__ = '0.1.0'
 import argparse
 import os
 import sys
-import tempfile
 import subprocess
+import math
 
 
 def main():
     _parser = argparse.ArgumentParser(prog='sphere2cube', description='''
         Maps an equirectangular (cylindrical projection; skysphere) map into 6 cube (cubemap; skybox) faces.
     ''')
-    # usage='''
-    # In order to create 2048-sized cube faces in TGA format from a map 'source.jpg' and place the resulting images in (a pre-existing) folder 'faces':
-    # $ sphere2cube source.jpg -r2048 -fTGA -ofaces
-    #     '''
     _parser.add_argument('file_path', nargs='?', metavar='<source>',
                          help='source equirectangular image file path')
     _parser.add_argument('-v', '--version', action='version', version=__version__)
@@ -52,20 +47,6 @@ def main():
 
     face_format = _args.path.replace('%n', '#').replace('%r', str(_args.resolution))
 
-    script = '''
-import bpy
-
-bpy.data.textures[0].image = bpy.data.images.load("%s")
-bpy.context.scene.render.resolution_x = %d
-bpy.context.scene.render.resolution_y = %d
-
-sphere = bpy.data.objects["Sphere"]
-sphere.rotation_mode = 'XYZ'
-sphere.rotation_euler = (%f, %f, %f)
-
-bpy.ops.render.render(animation=True)
-    ''' % (_args.file_path, _args.resolution, _args.resolution, rotations[0], rotations[1], rotations[2])
-
     output = _args.output_dir
     if output:
         output = output if os.path.isabs(output) else os.path.join(os.getcwd(), output)
@@ -76,17 +57,16 @@ bpy.ops.render.render(animation=True)
     else:
         output = face_format
 
-    with tempfile.NamedTemporaryFile(delete=False, suffix='.py') as temp:
-        temp.write(script)
-        temp.flush()
+    out = open(os.devnull, 'w') if not _args.verbose else None
 
-        out = open(os.devnull, 'w') if not _args.verbose else None
+    process = subprocess.Popen(
+        ['blender', '--background', '-noaudio',
+         # https://aerotwist.com/tutorials/create-your-own-environment-maps/, CC0
+         '-b', os.path.join(os.path.dirname(os.path.realpath(__file__)), 'projector.blend'),
+         '-o', output, '-F', _args.format, '-x', '1',
+         '-P', os.path.join(os.path.dirname(os.path.realpath(__file__)), 'blender_init.py')]
+        + (['-t', str(_args.threads)] if _args.threads else [])
+        + ['--', _args.file_path, str(_args.resolution), str(rotations[0]), str(rotations[1]), str(rotations[2])],
+        stderr=out, stdout=out)
 
-        process = subprocess.Popen(
-            ['blender', '--background', '-noaudio', '-b',
-             os.path.join(os.path.dirname(os.path.realpath(__file__)), 'cubemapgen.blend'),
-             '-o', output, '-F', _args.format, '-x', '1', '-P', temp.name]
-            + (['-t', str(_args.threads)] if _args.threads else []),
-            stderr=out, stdout=out)
-
-        process.wait()
+    process.wait()
