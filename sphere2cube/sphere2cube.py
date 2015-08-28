@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-__author__ = 'Tudor'
-__version__ = '0.1.4'
+__author__ = 'Xyene'
 
 import argparse
 import os
 import sys
 import subprocess
 import math
+from version import __version__
 
 
 def main():
@@ -74,7 +74,11 @@ def main():
     except:
         print('error spawning blender (%s) executable' % _args.blender_path)
         import traceback
+
         traceback.print_exc()
         sys.exit(1)
     else:
         process.wait()
+        if process.returncode:
+            print('blender exited with error code %d' % process.returncode)
+            sys.exit(process.returncode)

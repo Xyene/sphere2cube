@@ -1,3 +1,5 @@
+__author__ = 'Xyene'
+
 import bpy
 import sys
 
