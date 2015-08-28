@@ -67,7 +67,9 @@ Installation
 ============
 
 ``sphere2cube`` can be easily installed with ``pip``. It depends on
-Blender being installed on the system.
+Blender being installed on the system and in the system PATH environment variable.
+
+If it is not possible for PATH to be edited (as in the case of an unprivileged user), the path to the ``blender`` executable may instead be passed through the ``-b`` flag.
 
 Windows
 -------
@@ -76,7 +78,7 @@ Install `Blender`_, and add ``blender.exe`` to ``PATH``. Finally,
 
 ::
 
-    pip install https://github.com/Xyene/sphere2cube/zipball/master
+    pip install sphere2cube
 
 Linux
 -----
@@ -84,6 +86,16 @@ Linux
 ::
 
     $ apt-get install blender
-    $ pip install https://github.com/Xyene/sphere2cube/zipball/master
+    $ pip install sphere2cube
+
+Mac OS X
+--------
+
+Similar to Windows, install `Blender`_, and add ``blender.exe`` to ``$PATH``. Then,
+
+::
+
+    $ pip install sphere2cube
+
 
 .. _Blender: https://www.blender.org/
