@@ -2,7 +2,7 @@ sphere2cube
 ===========
 
 ``sphere2cube`` is a Python script to map  equirectangular
-(cylindrical projection; skysphere) map into 6 cube (cubemap; skybox)
+(cylindrical projection, skysphere) map into 6 cube (cubemap, skybox)
 faces.
 
 Usage
@@ -14,36 +14,38 @@ Usage
     usage: sphere2cube [-h] [-v] [-r <size>] [-R <rx> <ry> <rz>] [-p <pattern>]
                        [-o <dir>] [-f <name>] [-b <path>] [-t <count>] [-V]
                        [<source>]
-
-    Maps an equirectangular (cylindrical projection; skysphere) map into 6 cube
-    (cubemap; skybox) faces.
-
+    
+    Maps an equirectangular (cylindrical projection, skysphere) map into 6 cube
+    (cubemap, skybox) faces.
+    
     positional arguments:
-      <source>              source equirectangular image file path
-
+      <source>              source equirectangular image filename
+    
     optional arguments:
       -h, --help            show this help message and exit
       -v, --version         show program's version number and exit
       -r <size>, --resolution <size>
-                            resolution for each cube face generated
+                            resolution for each generated cube face (defaults to 1024)
       -R <rx> <ry> <rz>, --rotation <rx> <ry> <rz>
                             rotation in degrees to apply before rendering cube
-                            faces, x y z format
+                            faces (z is up)
       -p <pattern>, --path <pattern>
-                            pattern to save rendered faces: default is
-                            "face_%n_%r", where %n is face number, and %r is
-                            resolution
+                            filename pattern for rendered faces: default is
+                            "face_%n_%r", where %n is replaced by the face number
+                            and %r by the resolution
       -o <dir>, --output-dir <dir>
-                            output directory for faces
+                            directory to save rendered faces to (it must already
+                            exist)
       -f <name>, --format <name>
                             format to use when saving faces, i.e. "PNG" or "TGA"
       -b <path>, --blender-path <path>
-                            path to blender executable (default "blender")
+                            filename of the Blender executable (defaults to
+                            "blender")
       -t <count>, --threads <count>
                             number of threads to use when rendering (1-64)
       -V, --verbose         enable verbose logging
 
-Output formats supported depend on the Blender installation, but will
+Supported output formats depend on the Blender installation, but will
 generally be TGA, IRIS, JPEG, MOVIE, IRIZ, RAWTGA, AVIRAW, AVIJPEG, PNG,
 BMP, and FRAMESERVER.
 
@@ -66,10 +68,9 @@ working directory.
 Installation
 ============
 
-``sphere2cube`` can be easily installed with ``pip``. It depends on
-Blender being installed on the system and in the system PATH environment variable.
+``sphere2cube`` can be easily installed with ``pip``.
 
-If it is not possible for PATH to be edited (as in the case of an unprivileged user), the path to the ``blender`` executable may instead be passed through the ``-b`` flag.
+It assumes that Blender is installed and the ``blender`` executable is listed in the system PATH environment variable. If it is not possible for PATH to be edited (as in the case of an unprivileged user), the path to the ``blender`` executable may instead be passed through the ``-b`` flag.
 
 Windows
 -------
