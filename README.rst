@@ -92,7 +92,7 @@ Linux
 Mac OS X
 --------
 
-Similar to Windows, install `Blender`_, and add ``blender.exe`` to ``$PATH``. Then,
+Similar to Windows, install `Blender`_, and add the ``blender`` executable to ``$PATH``. Then,
 
 ::
 
