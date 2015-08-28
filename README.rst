@@ -1,9 +1,12 @@
 sphere2cube
 ===========
 
-``sphere2cube`` is a Python script to map an equirectangular
+``sphere2cube`` is a Python script to map  equirectangular
 (cylindrical projection; skysphere) map into 6 cube (cubemap; skybox)
 faces.
+
+Usage
+=====
 
 ::
 
@@ -44,20 +47,20 @@ Output formats supported depend on the Blender installation, but will
 generally be TGA, IRIS, JPEG, MOVIE, IRIZ, RAWTGA, AVIRAW, AVIJPEG, PNG,
 BMP, and FRAMESERVER.
 
-``sphere2cube`` can be run in a headless environment (for example, a
+``sphere2cube`` can be run in a headless environment (e.g., a
 server).
 
 Examples
 ========
 
-For example, to render a 2048-resolution TGA cubemap from
-``source.jpg``, we could use:
+For instance, to render a 2048-resolution TGA cubemap from
+``source.jpg``, we could use the following command:
 
 ::
 
     $ sphere2cube source.jpg -r2048 -fTGA
 
-which would generate ``face_1_2048.tga``, …, ``face_6_2048.tga`` in the
+This would generate ``face_1_2048.tga``, …, ``face_6_2048.tga`` in the
 working directory.
 
 Installation
@@ -65,14 +68,6 @@ Installation
 
 ``sphere2cube`` can be easily installed with ``pip``. It depends on
 Blender being installed on the system.
-
-Linux
------
-
-::
-
-    $ apt-get install blender
-    $ pip install https://github.com/Xyene/sphere2cube/zipball/master
 
 Windows
 -------
@@ -82,5 +77,13 @@ Install `Blender`_, and add ``blender.exe`` to ``PATH``. Finally,
 ::
 
     pip install https://github.com/Xyene/sphere2cube/zipball/master
+
+Linux
+-----
+
+::
+
+    $ apt-get install blender
+    $ pip install https://github.com/Xyene/sphere2cube/zipball/master
 
 .. _Blender: https://www.blender.org/
