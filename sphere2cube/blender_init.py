@@ -10,4 +10,7 @@ sphere = bpy.data.objects["Sphere"]
 sphere.rotation_mode = 'XYZ'
 sphere.rotation_euler = (float(sys.argv[-3]), float(sys.argv[-2]), float(sys.argv[-1]))
 
+bpy.data.meshes["Sphere"].use_auto_texspace = 0
+bpy.data.meshes["Sphere"].texspace_size[0] = -1
+
 bpy.ops.render.render(animation=True)
