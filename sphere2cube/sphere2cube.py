@@ -21,7 +21,7 @@ def main():
                          help='resolution for each cube face generated')
     _parser.add_argument('-R', '--rotation', type=int, nargs=3, default=[0, 0, 0], metavar=('<rx>', '<ry>', '<rz>'),
                          help="rotation in degrees to apply before rendering cube faces, x y z format")
-    _parser.add_argument('-F', '--fov', type=int, nargs=1, default=90, metavar=('angle>'),
+    _parser.add_argument('-F', '--fov', type=int, default=90, metavar=('<angle>'),
                          help="Field of View of camera used for rendering cube faces.")
 
     _parser.add_argument('-p', '--path', type=str, default='face_%n_%r', metavar='<pattern>',
@@ -38,8 +38,9 @@ def main():
     _parser.add_argument('-V', '--verbose', action='store_true',
                          help='enable verbose logging')
     _args = _parser.parse_args()
-    cam_fov = math.radians(float(_args.fov[0]))
+
     rotations = map(lambda x: math.radians(x), _args.rotation)
+
 
     if _args.threads and _args.threads not in range(1, 65):
         _parser.print_usage()
@@ -63,6 +64,8 @@ def main():
         output = face_format
 
     out = open(os.devnull, 'w') if not _args.verbose else None
+
+    cam_fov = math.radians(float(_args.fov))
 
     try:
         process = subprocess.Popen(
