@@ -21,6 +21,9 @@ def main():
                          help='resolution for each cube face generated')
     _parser.add_argument('-R', '--rotation', type=int, nargs=3, default=[0, 0, 0], metavar=('<rx>', '<ry>', '<rz>'),
                          help="rotation in degrees to apply before rendering cube faces, x y z format")
+    _parser.add_argument('-F', '--fov', type=int, nargs=1, default=90, metavar=('angle>'),
+                         help="Field of View of camera used for rendering cube faces.")
+
     _parser.add_argument('-p', '--path', type=str, default='face_%n_%r', metavar='<pattern>',
                          help='pattern to save rendered faces: default is '
                               '"face_%%n_%%r", where %%n is face number, and %%r is resolution')
@@ -35,7 +38,7 @@ def main():
     _parser.add_argument('-V', '--verbose', action='store_true',
                          help='enable verbose logging')
     _args = _parser.parse_args()
-
+    cam_fov = math.radians(float(_args.fov[0]))
     rotations = map(lambda x: math.radians(x), _args.rotation)
 
     if _args.threads and _args.threads not in range(1, 65):
@@ -69,7 +72,8 @@ def main():
              '-o', output, '-F', _args.format, '-x', '1',
              '-P', os.path.join(os.path.dirname(os.path.realpath(__file__)), 'blender_init.py')]
             + (['-t', str(_args.threads)] if _args.threads else [])
-            + ['--', _args.file_path, str(_args.resolution), str(rotations[0]), str(rotations[1]), str(rotations[2])],
+            + ['--', _args.file_path, str(_args.resolution), str(rotations[0]), str(rotations[1]), str(rotations[2]),
+               str(cam_fov)],
             stderr=out, stdout=out)
     except:
         print('error spawning blender (%s) executable' % _args.blender_path)
