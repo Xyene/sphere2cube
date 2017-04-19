@@ -22,8 +22,7 @@ def main():
     _parser.add_argument('-R', '--rotation', type=int, nargs=3, default=[0, 0, 0], metavar=('<rx>', '<ry>', '<rz>'),
                          help="rotation in degrees to apply before rendering cube faces, x y z format")
     _parser.add_argument('-F', '--fov', type=int, default=90, metavar=('<angle>'),
-                         help="Field of View of camera used for rendering cube faces.")
-
+                         help="field of view of camera used for rendering cube faces")
     _parser.add_argument('-p', '--path', type=str, default='face_%n_%r', metavar='<pattern>',
                          help='pattern to save rendered faces: default is '
                               '"face_%%n_%%r", where %%n is face number, and %%r is resolution')
