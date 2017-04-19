@@ -30,8 +30,7 @@ Usage
                             rotation in degrees to apply before rendering cube
                             faces (z is up)
       -F <angle>, --fov <angle>
-                            Field of View of camera used for rendering cube faces.
-
+                            field of view of camera used for rendering cube faces
       -p <pattern>, --path <pattern>
                             filename pattern for rendered faces: default is
                             "face_%n_%r", where %n is replaced by the face number
