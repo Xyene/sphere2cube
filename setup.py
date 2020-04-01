@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 
 __author__ = 'Xyene'
-import ez_setup
-
-ez_setup.use_setuptools()
 from setuptools import setup, find_packages
 import os
 
@@ -18,7 +15,7 @@ setup(name='sphere2cube',
       description='Utility to map an equirectangular (cylindrical projection; skysphere) map into 6 cube (cubemap; skybox) faces',
       long_description=long_description,
       author='Tudor Brindus',
-      author_email='tbrindus@gmail.com',
+      author_email='me@tbrindus.ca',
       url='http://github.com/Xyene/sphere2cube',
       packages=find_packages(),
       package_data={
@@ -33,9 +30,10 @@ setup(name='sphere2cube',
           'Intended Audience :: Developers',
           'Programming Language :: Python :: 2.7',
           'Programming Language :: Python :: 3',
-          'Programming Language :: Python :: 3.2',
-          'Programming Language :: Python :: 3.3',
-          'Programming Language :: Python :: 3.4',
+          'Programming Language :: Python :: 3.5',
+          'Programming Language :: Python :: 3.6',
+          'Programming Language :: Python :: 3.7',
+          'Programming Language :: Python :: 3.8',
           'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
           'Operating System :: OS Independent',
           'Programming Language :: Python',
