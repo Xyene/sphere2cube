@@ -1,9 +1,14 @@
-sphere2cube
+sphere2cube |PyPI version| |PyPI|
 ===========
+
+.. |PyPI version| image:: https://badge.fury.io/py/sphere2cube.svg
+   :target: https://pypi.python.org/pypi/sphere2cube
+.. |PyPI| image:: https://img.shields.io/pypi/pyversions/sphere2cube.svg
+   :target: https://pypi.python.org/pypi/sphere2cube
 
 ``sphere2cube`` is a Python script to map  equirectangular
 (cylindrical projection, skysphere) map into 6 cube (cubemap, skybox)
-faces.
+faces. See also `cube2sphere`_.
 
 Usage
 =====
@@ -70,7 +75,7 @@ working directory.
 Installation
 ============
 
-``sphere2cube`` can be easily installed with ``pip``.
+``sphere2cube`` can be easily installed with ``pip``. It requires a Python 3 installation.
 
 It assumes that Blender is installed and the ``blender`` executable is listed in the system PATH environment variable. If it is not possible for PATH to be edited (as in the case of an unprivileged user), the path to the ``blender`` executable may instead be passed through the ``-b`` flag.
 
@@ -101,4 +106,5 @@ Similar to Windows, install `Blender`_, and add the ``blender`` executable to ``
     $ pip install sphere2cube
 
 
+.. _cube2sphere: https://github.com/Xyene/cube2sphere
 .. _Blender: https://www.blender.org/
