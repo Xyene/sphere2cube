@@ -1,31 +1,24 @@
-sphere2cube |PyPI version| |PyPI|
+sphere2cube [![PyPI version](https://badge.fury.io/py/sphere2cube.svg)](https://pypi.python.org/pypi/sphere2cube) [![PyPI](https://img.shields.io/pypi/pyversions/sphere2cube.svg)](https://pypi.python.org/pypi/sphere2cube)
 ===========
 
-.. |PyPI version| image:: https://badge.fury.io/py/sphere2cube.svg
-   :target: https://pypi.python.org/pypi/sphere2cube
-.. |PyPI| image:: https://img.shields.io/pypi/pyversions/sphere2cube.svg
-   :target: https://pypi.python.org/pypi/sphere2cube
-
-``sphere2cube`` is a Python script to map  equirectangular
-(cylindrical projection, skysphere) map into 6 cube (cubemap, skybox)
-faces. See also `cube2sphere`_.
+`sphere2cube` is a Python script to map equirectangular (cylindrical
+projection, skysphere) map into 6 cube (cubemap, skybox) faces. See also
+[cube2sphere](https://github.com/Xyene/cube2sphere).
 
 Usage
 =====
-
-::
 
     $ sphere2cube -h
     usage: sphere2cube [-h] [-v] [-r <size>] [-R <rx> <ry> <rz>] [-p <pattern>]
                        [-o <dir>] [-f <name>] [-b <path>] [-t <count>] [-V]
                        [<source>]
-    
+
     Maps an equirectangular (cylindrical projection, skysphere) map into 6 cube
     (cubemap, skybox) faces.
-    
+
     positional arguments:
       <source>              source equirectangular image filename
-    
+
     optional arguments:
       -h, --help            show this help message and exit
       -v, --version         show program's version number and exit
@@ -56,42 +49,39 @@ Supported output formats depend on the Blender installation, but will
 generally be TGA, IRIS, JPEG, MOVIE, IRIZ, RAWTGA, AVIRAW, AVIJPEG, PNG,
 BMP, and FRAMESERVER.
 
-``sphere2cube`` can be run in a headless environment (e.g., a
-server).
+`sphere2cube` can be run in a headless environment (e.g., a server).
 
 Examples
 ========
 
-For instance, to render a 2048-resolution TGA cubemap from
-``source.jpg``, we could use the following command:
-
-::
+For instance, to render a 2048-resolution TGA cubemap from `source.jpg`,
+we could use the following command:
 
     $ sphere2cube source.jpg -r2048 -fTGA
 
-This would generate ``face_1_2048.tga``, …, ``face_6_2048.tga`` in the
+This would generate `face_1_2048.tga`, …, `face_6_2048.tga` in the
 working directory.
 
 Installation
 ============
 
-``sphere2cube`` can be easily installed with ``pip``. It requires a Python 3 installation, and at least Blender 2.8.
+`sphere2cube` can be easily installed with `pip`. It requires a Python 3
+installation, and at least [Blender 2.8](https://www.blender.org/).
 
-It assumes that Blender is installed and the ``blender`` executable is listed in the system PATH environment variable. If it is not possible for PATH to be edited (as in the case of an unprivileged user), the path to the ``blender`` executable may instead be passed through the ``-b`` flag.
+It assumes that Blender is installed and the `blender` executable is
+listed in the system PATH environment variable. If it is not possible
+for PATH to be edited (as in the case of an unprivileged user), the path
+to the `blender` executable may instead be passed through the `-b` flag.
 
 Windows
 -------
 
-Install `Blender`_, and add ``blender.exe`` to ``PATH``. Finally,
-
-::
+Install Blender, and add `blender.exe` to `PATH`. Finally,
 
     pip install sphere2cube
 
 Linux
 -----
-
-::
 
     $ apt-get install blender
     $ pip install sphere2cube
@@ -99,12 +89,7 @@ Linux
 Mac OS X
 --------
 
-Similar to Windows, install `Blender`_, and add the ``blender`` executable to ``$PATH``. Then,
-
-::
+Similar to Windows, install [Blender], and add the `blender` executable
+to `$PATH`. Then,
 
     $ pip install sphere2cube
-
-
-.. _cube2sphere: https://github.com/Xyene/cube2sphere
-.. _Blender: https://www.blender.org/
