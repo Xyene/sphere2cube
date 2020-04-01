@@ -75,7 +75,7 @@ working directory.
 Installation
 ============
 
-``sphere2cube`` can be easily installed with ``pip``. It requires a Python 3 installation.
+``sphere2cube`` can be easily installed with ``pip``. It requires a Python 3 installation, and at least Blender 2.8.
 
 It assumes that Blender is installed and the ``blender`` executable is listed in the system PATH environment variable. If it is not possible for PATH to be edited (as in the case of an unprivileged user), the path to the ``blender`` executable may instead be passed through the ``-b`` flag.
 
