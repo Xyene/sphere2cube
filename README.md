@@ -3,7 +3,7 @@ sphere2cube [![PyPI version](https://badge.fury.io/py/sphere2cube.svg)](https://
 
 `sphere2cube` is a Python script to map equirectangular (cylindrical
 projection, skysphere) map into 6 cube (cubemap, skybox) faces. See also
-[cube2sphere](https://github.com/Xyene/cube2sphere).
+[`cube2sphere`](https://github.com/Xyene/cube2sphere).
 
 Usage
 =====
