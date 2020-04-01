@@ -40,7 +40,6 @@ def main():
 
     rotations = [math.radians(x) for x in _args.rotation]
 
-
     if _args.threads and _args.threads not in list(range(1, 65)):
         _parser.print_usage()
         print('sphere2cube: error: too many threads specified (range is 1-64)')
@@ -60,7 +59,9 @@ def main():
             sys.exit(1)
         output = os.path.join(output, face_format)
     else:
-        output = face_format
+        output = os.path.join(os.getcwd(), face_format)
+
+    file_path = _args.file_path if os.path.isabs(_args.file_path) else os.path.join(os.getcwd(), _args.file_path)
 
     out = open(os.devnull, 'w') if not _args.verbose else None
 
@@ -74,17 +75,21 @@ def main():
              '-o', output, '-F', _args.format, '-x', '1',
              '-P', os.path.join(os.path.dirname(os.path.realpath(__file__)), 'blender_init.py')]
             + (['-t', str(_args.threads)] if _args.threads else [])
-            + ['--', _args.file_path, str(_args.resolution), str(rotations[0]), str(rotations[1]), str(rotations[2]),
+            + ['--', file_path, str(_args.resolution), str(rotations[0]), str(rotations[1]), str(rotations[2]),
                str(cam_fov)],
-            stderr=out, stdout=out)
+            stderr=subprocess.PIPE, stdout=out)
+
+        _, stderr = process.communicate()
+
+        if stderr:
+            print('error invoking blender:\n %s' % stderr)
+
+        if process.returncode:
+            print('blender exited with error code %d' % process.returncode)
+            sys.exit(process.returncode)
     except:
         print('error spawning blender (%s) executable' % _args.blender_path)
         import traceback
 
         traceback.print_exc()
         sys.exit(1)
-    else:
-        process.wait()
-        if process.returncode:
-            print('blender exited with error code %d' % process.returncode)
-            sys.exit(process.returncode)
