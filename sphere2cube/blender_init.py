@@ -3,7 +3,7 @@ __author__ = 'Xyene'
 import bpy
 import sys
 
-bpy.data.textures[0].image = bpy.data.images.load("%s" % sys.argv[-6])
+bpy.data.images[1].filepath = "%s" % sys.argv[-6]
 bpy.context.scene.render.resolution_x = bpy.context.scene.render.resolution_y = int(sys.argv[-5])
 
 sphere = bpy.data.objects["Sphere"]
